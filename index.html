@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        function computerPlay() {
+            //assign choice a value between 0 and 2
+            let choice = Math.floor(Math.random() * 3);
+
+            //if choice is 0, return rock as play
+            if (choice === 0) {
+                console.log("rock");
+                choice = "rock";
+                return choice;
+            }
+            //if choice is 1, return paper as play
+            else if (choice === 1) {
+                console.log("paper");
+                choice = "paper";
+                return choice;
+            }
+            //if choice is 2, return scissors as play
+            else {
+                console.log("scissors");
+                choice = "scissors"
+                return choice;
+            }
+        }
+
+        function playRound(computerSelection, playerSelection) {
+
+        }
+
+        function game() {
+
+        }
+    </script>
+</html>
