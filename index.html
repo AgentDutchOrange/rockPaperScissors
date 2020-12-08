@@ -3,34 +3,71 @@
     <script>
         function computerPlay() {
             //assign choice a value between 0 and 2
-            let choice = Math.floor(Math.random() * 3);
+            computerSelection = Math.floor(Math.random() * 3);
 
             //if choice is 0, return rock as play
-            if (choice === 0) {
-                console.log("rock");
-                choice = "rock";
-                return choice;
+            if (computerSelection === 0) {
+                computerSelection = "rock";
+                return computerSelection;
             }
             //if choice is 1, return paper as play
-            else if (choice === 1) {
-                console.log("paper");
-                choice = "paper";
-                return choice;
+            else if (computerSelection === 1) {
+                computerSelection = "paper";
+                return computerSelection;
             }
             //if choice is 2, return scissors as play
             else {
-                console.log("scissors");
-                choice = "scissors"
-                return choice;
+                computerSelection = "scissors"
+                return computerSelection;
             }
         }
 
         function playRound(computerSelection, playerSelection) {
+            //condition if computer wins. Console log shows loss message and computerScore incremented
+            if ((computerSelection === "rock" && playerSelection === "scissors") 
+                || (computerSelection === "paper" && playerSelection === "rock") 
+                || (computerSelection === "scissors" && playerSelection === "paper")) {
+                    console.log(`You lose! Computer played ${computerSelection} and you played ${playerSelection}.`);
+                    computerScore++;
+                }
+            //condition if player wins. Console log shows victory message and playerScore incremented
+            else if ((computerSelection === "rock" && playerSelection === "paper") 
+                || (computerSelection === "paper" && playerSelection === "scissors") 
+                || (computerSelection === "scissors" && playerSelection === "rock")) {
+                    console.log(`You win! Computer played ${computerSelection} and you played ${playerSelection}.`);
+                    playerScore++;
+                }
+            //condition if draw
+            else {
+                console.log("Draw!");
 
+            }
         }
 
         function game() {
-
+            //loop while both scores are under 3 win threshold
+            while(computerScore < 3 && playerScore < 3) {
+                //prompt user for selection
+                let playerSelection = prompt("rock, paper, or scissors?");
+                playerSelection = playerSelection.toLowerCase();
+                //retrieve computer selection
+                computerPlay();
+                //initiate a round of rock, paper, scissors
+                playRound(computerSelection, playerSelection);
+                if(computerScore >= 3) {
+                    console.log("Computer wins the series!")
+                }
+                else if(playerScore >= 3) {
+                    console.log("You win the series!")
+                }
+            }
         }
+        //game initiation
+        let computerScore = 0;
+        let playerScore = 0;
+        let computerSelection = undefined;
+            
+        game();
+
     </script>
 </html>
