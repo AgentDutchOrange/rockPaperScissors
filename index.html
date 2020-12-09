@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
     <script>
+
+         //game initiation
+        let computerScore = 0;
+        let playerScore = 0;
+        let computerSelection = undefined;
+            
+        game();
         function computerPlay() {
             //assign choice a value between 0 and 2
             computerSelection = Math.floor(Math.random() * 3);
@@ -47,7 +54,7 @@
         function game() {
             //loop while both scores are under 3 win threshold
             while(computerScore < 3 && playerScore < 3) {
-                //prompt user for selection
+                //prompt user for selection, convert input to lowercase for playRound validations
                 let playerSelection = prompt("rock, paper, or scissors?");
                 playerSelection = playerSelection.toLowerCase();
                 //retrieve computer selection
@@ -62,12 +69,6 @@
                 }
             }
         }
-        //game initiation
-        let computerScore = 0;
-        let playerScore = 0;
-        let computerSelection = undefined;
-            
-        game();
 
     </script>
 </html>
